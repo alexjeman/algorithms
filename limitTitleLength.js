@@ -1,4 +1,4 @@
-const limitTitleLength = (title, limit = 17) => {
+const limitTitleLength = (title, limit) => {
   const newTitle = [];
   if(title.length > limit) {
     title.split(' ').reduce((acc, cur) => {
@@ -7,9 +7,9 @@ const limitTitleLength = (title, limit = 17) => {
       }
       return acc + cur.length
     }, 0)
-    return `${newTitle.join(' ')} ...}`
+    return `${newTitle.join(' ')} ...`
   }
   return title;
 }
 
-console.log(limitTitleLength(`Dolorem porro est qui quisquam dolorem ipsum quia dolor sit amet, consectetur, adipisci velit`));
+limitTitleLength(`Dolorem porro est qui quisquam dolorem ipsum quia dolor sit amet, consectetur, adipisci velit`, 17);
