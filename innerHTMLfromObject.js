@@ -1,7 +1,7 @@
-var message = '';
+var message = "";
 
 function print(message) {
-  var outputDiv = document.getElementById('output');
+  var outputDiv = document.getElementById("output");
   outputDiv.innerHTML = message;
 }
 
