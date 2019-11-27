@@ -5,17 +5,14 @@ function twoNumberSum(array, targetSum) {
   let i = 0;
   while (i < array.length) {
     const potentialMatch = targetSum - array[i]; // const previousIndex = previousValues[potentialMatch];
-    if (previousValues[potentialMatch]) { // replace with if (previousIndex != null)
-      return [potentialMatch, array[i]]; // replace with return [previousIndex, i];
+    if (previousValues[potentialMatch]) {        // replace with if (previousIndex != null)
+      return [potentialMatch, array[i]];         // replace with return [previousIndex, i];
     } else {
-      previousValues[array[i]] = true; // replace true with i
+      previousValues[array[i]] = true;           // replace true with i
     }
     i++;
   }
   return [];
 }
 
-let arr = [6, 4];
-let num = 10;
-
-twoNumberSum(arr, num)
+module.exports = twoNumberSum;
