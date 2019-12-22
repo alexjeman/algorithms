@@ -10,7 +10,7 @@ function arrayFlatten(items) {
     if (Array.isArray(item)) {
       flatArray.push(...arrayFlatten(item));
     } else {
-      // Push items and items destructured from previous if
+      // Construct new array, push items and destructured items from previous if
       flatArray.push(item);
     }
   });
