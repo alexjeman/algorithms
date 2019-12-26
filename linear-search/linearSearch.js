@@ -1,7 +1,6 @@
 // Time O(n) Space O(1)
 function linearSearch(array, target) {
-  // Compare each element against target and return "i" if found or -1S if not found.
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {  // Compare each element against target and return "i" if found or -1 if not found.
     if (target === array[i]) {
       return i;
     }

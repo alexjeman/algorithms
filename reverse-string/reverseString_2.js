@@ -6,6 +6,4 @@ function reverseString(str) {
   return reversed;
 }
 
-let string = "hello";
-
-console.log(reverseString(string));
+console.log(reverseString("hello"));
