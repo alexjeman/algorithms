@@ -1,16 +1,14 @@
 // O(n)
 function twoNumberSum(array, targetSum) {
-  const previousValues = {};
-  let i = 0;
-  while (i < array.length) {
-    const potentialMatch = targetSum - array[i];
-    const previousIndex = previousValues[potentialMatch];
-    if (previousIndex != null) {
-      return [array[previousIndex], array[i]]; // remove "array[" "]" if you want to get index only
+  const index = {};
+  for (let i = 0; i < array.length; i++) {
+    const possibleMatch = targetSum - array[i];
+    const indexedMatch = index[possibleMatch];
+    if (indexedMatch == null) {
+      index[array[i]] = i;
     } else {
-      previousValues[array[i]] = i;
+      return [array[indexedMatch], array[i]]; // remove "array[" "]" if you want to get index only
     }
-    i++;
   }
   return [];
 }

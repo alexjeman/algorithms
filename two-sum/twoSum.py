@@ -1,15 +1,13 @@
-# O(n)
-def twoNumberSum(arr, target):
-    map = {}
-    i = 0
-    while i < len(arr):
-        potentialMatch = target - arr[i]
-        previousIndex = map.get(potentialMatch)
-        if previousIndex != None:
-            return [previousIndex, i] # Add array[ ] if you want to return numbers
+# O(n) time, O(log(n)) space
+def twoNumberSum(arr, targetSum):
+    index = {}
+    for i in range(len(arr)):
+        possibleMatch = targetSum - arr[i]
+        indexedMatch = index.get(possibleMatch)
+        if indexedMatch == None:
+            index[arr[i]] = i
         else:
-            map[arr[i]] = i
-        i += 1
+            return [indexedMatch, i] # Add array[ ] if you want to return numbers
     return []
 
 
