@@ -24,7 +24,7 @@ class LinkedList {
     this.length += 1;
     return this;
   }
-  
+
   pop() {
     if (this.head === null) {
       return null;
@@ -44,6 +44,19 @@ class LinkedList {
       }
       return currentNode;
     }
+  }
+
+  shift() {
+    if (this.head === null) {
+      return null;
+    }
+    let currentHead = this.head;
+    this.head = currentHead.next;
+    this.length -= 1;
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    return currentHead;
   }
 
   removeNodeBindings(currentNode) {

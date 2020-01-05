@@ -48,6 +48,20 @@ class LinkedList {
     }
   }
 
+  shift() {
+    if (this.head === null) {
+      return null;
+    }
+    let currentHead = this.head;
+    this.head = currentHead.next;
+    this.head.prev = null;
+    this.length -= 1;
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    return currentHead;
+  }
+
   removeNodeBindings(currentNode) {
     if (currentNode.prev !== null) {
       currentNode.prev.next = currentNode.next;
@@ -62,3 +76,9 @@ class LinkedList {
 }
 
 let list = new LinkedList();
+
+list.push(901);
+list.push(902);
+list.push(903);
+list.push(904);
+list.push(905);
