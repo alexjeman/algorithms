@@ -2,6 +2,7 @@ class Node {
   constructor(value) {
     this.value = value;
     this.next = null;
+    this.prev = null;
   }
 }
 
@@ -22,8 +23,41 @@ class LinkedList {
       newNode.prev = this.tail;
       this.tail = newNode;
     }
-    this.length++;
+    this.length += 1;
     return this;
+  }
+
+  pop() {
+    if (this.head === null) {
+      return null;
+    } else {
+      let currentNode = this.head;
+      let secondToLastNode = currentNode;
+      while (currentNode.next) {
+        secondToLastNode = currentNode;
+        currentNode = currentNode.next;
+      }
+      this.removeNodeBindings(currentNode);
+      this.tail = secondToLastNode;
+      this.length -= 1;
+      if (this.length === 0) {
+        this.head = null;
+        this.tail = null;
+      }
+      return currentNode;
+    }
+  }
+
+  removeNodeBindings(currentNode) {
+    if (currentNode.prev !== null) {
+      currentNode.prev.next = currentNode.next;
+    }
+    if (currentNode.next !== null) {
+      currentNode.next.prev = currentNode.prev;
+    }
+    currentNode.prev = null;
+    currentNode.next = null;
+    return currentNode;
   }
 }
 
