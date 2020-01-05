@@ -30,22 +30,12 @@ class LinkedList {
   pop() {
     if (this.head === null) {
       return null;
-    } else {
-      let currentNode = this.head;
-      let secondToLastNode = currentNode;
-      while (currentNode.next) {
-        secondToLastNode = currentNode;
-        currentNode = currentNode.next;
-      }
-      this.removeNodeBindings(currentNode);
-      this.tail = secondToLastNode;
-      this.length -= 1;
-      if (this.length === 0) {
-        this.head = null;
-        this.tail = null;
-      }
-      return currentNode;
     }
+    let currentTail = this.tail;
+    let secondToLastNode = currentTail.prev;
+    this.removeNodeBindings(currentTail);
+    this.tail = secondToLastNode;
+    return currentTail;
   }
 
   shift() {
@@ -53,12 +43,9 @@ class LinkedList {
       return null;
     }
     let currentHead = this.head;
-    this.head = currentHead.next;
-    this.head.prev = null;
-    this.length -= 1;
-    if (this.length === 0) {
-      this.tail = null;
-    }
+    let secondToHeadNode = currentHead.next;
+    this.removeNodeBindings(currentHead);
+    this.head = secondToHeadNode;
     return currentHead;
   }
 
@@ -71,6 +58,11 @@ class LinkedList {
     }
     currentNode.prev = null;
     currentNode.next = null;
+    this.length -= 1;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
     return currentNode;
   }
 }

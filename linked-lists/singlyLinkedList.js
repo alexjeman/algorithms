@@ -37,11 +37,6 @@ class LinkedList {
       }
       this.removeNodeBindings(secondToLastNode);
       this.tail = secondToLastNode;
-      this.length -= 1;
-      if (this.length === 0) {
-        this.head = null;
-        this.tail = null;
-      }
       return currentNode;
     }
   }
@@ -51,16 +46,19 @@ class LinkedList {
       return null;
     }
     let currentHead = this.head;
-    this.head = currentHead.next;
-    this.length -= 1;
-    if (this.length === 0) {
-      this.tail = null;
-    }
+    let secondToHeadNode = currentHead.next;
+    this.removeNodeBindings(currentHead);
+    this.head = secondToHeadNode;
     return currentHead;
   }
 
   removeNodeBindings(currentNode) {
     currentNode.next = null;
+    this.length -= 1;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
     return currentNode;
   }
 }
