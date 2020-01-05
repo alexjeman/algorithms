@@ -82,6 +82,15 @@ class LinkedList {
     return current;
   }
 
+  set(index, value) {
+    let foundNode = this.get(index);
+    if (foundNode != null) {
+      foundNode.value = value;
+      return true;
+    }
+    return false;
+  }
+
   removeNodeBindings(currentNode) {
     if (currentNode.prev !== null) {
       currentNode.prev.next = currentNode.next;
