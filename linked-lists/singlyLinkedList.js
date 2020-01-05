@@ -21,8 +21,34 @@ class LinkedList {
       this.tail.next = newNode;
       this.tail = newNode;
     }
-    this.length++;
+    this.length += 1;
     return this;
+  }
+  
+  pop() {
+    if (this.head === null) {
+      return null;
+    } else {
+      let currentNode = this.head;
+      let secondToLastNode = currentNode;
+      while (currentNode.next) {
+        secondToLastNode = currentNode;
+        currentNode = currentNode.next;
+      }
+      this.removeNodeBindings(secondToLastNode);
+      this.tail = secondToLastNode;
+      this.length -= 1;
+      if (this.length === 0) {
+        this.head = null;
+        this.tail = null;
+      }
+      return currentNode;
+    }
+  }
+
+  removeNodeBindings(currentNode) {
+    currentNode.next = null;
+    return currentNode;
   }
 }
 
