@@ -49,6 +49,20 @@ class LinkedList {
     return currentHead;
   }
 
+  unshift(data) {
+    let newNode = new Node(data);
+    if (this.head === null) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.head.prev = newNode;
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length += 1;
+    return this;
+  }
+
   removeNodeBindings(currentNode) {
     if (currentNode.prev !== null) {
       currentNode.prev.next = currentNode.next;
