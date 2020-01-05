@@ -65,6 +65,18 @@ class LinkedList {
     return this;
   }
 
+  get(index) {
+    if (index == null || index < 0 || index >= this.length) {
+      return null;
+    }
+    let current;
+    current = this.head;
+    for (let i = 0; i !== index; i++) {
+      current = current.next;
+    }
+    return current;
+  }
+
   removeNodeBindings(currentNode) {
     currentNode.next = null;
     this.length -= 1;
@@ -77,3 +89,9 @@ class LinkedList {
 }
 
 let list = new LinkedList();
+
+list.push(901);
+list.push(902);
+list.push(903);
+list.push(904);
+list.push(905);
