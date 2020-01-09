@@ -15,3 +15,6 @@ function arrayFlatten(items) {
 }
 
 console.log(arrayFlatten(uglyArray));
+
+// Built in method
+console.log(uglyArray.flat(Infinity))

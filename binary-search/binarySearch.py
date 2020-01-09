@@ -15,4 +15,4 @@ def binarySearch(arr, target):
             left = middle + 1
     return -1
 
-print(binarySearch([2, 5, 6, 8, 9, 12, 15, 20, 24, 26, 47], 15))
+print(binarySearch([2, 5, 6, 8, 9, 12, 15, 20, 24, 26, 47], 8))

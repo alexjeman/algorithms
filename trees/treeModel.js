@@ -1,4 +1,11 @@
 /** Tree model */
+class Node {
+  constructor(value, children) {
+    this.value = value;
+    this.children = children;
+  }
+}
+
 class Tree {
   constructor(root) {
     this.root = root || null;
@@ -75,13 +82,6 @@ class Tree {
     });
 
     return leafsRet.flat();
-  }
-}
-
-class Node {
-  constructor(value, children) {
-    this.value = value;
-    this.children = children;
   }
 }
 

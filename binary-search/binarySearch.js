@@ -17,4 +17,4 @@ function binarySearch(array, target) {
   return -1;
 }
 
-console.log(binarySearch([2, 5, 6, 8, 9, 12, 15, 20, 24, 26, 47], 15));
+console.log(binarySearch([2, 5, 6, 8, 9, 12, 15, 20, 24, 26, 47], 8));
