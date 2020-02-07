@@ -13,7 +13,7 @@ class LinkedList:
 
     def push(self, data):
         newNode = Node(data)
-        if self.head == None:
+        if self.head is None:
             self.head = newNode
             self.tail = newNode
         else:

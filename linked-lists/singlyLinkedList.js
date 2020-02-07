@@ -86,6 +86,32 @@ class LinkedList {
     return false;
   }
 
+    insert(index, value) {
+    if (index < 0 || index > this.length) return false;
+    if (index === 0) return !!this.unshift(value);
+    if (index === this.length) return !!this.push(value);
+
+    let newNode = new Node(value);
+    let previousNode = this.get(index - 1);
+    let afterNode = previousNode.next;
+
+    previousNode.next = newNode;
+    newNode.next = afterNode;
+    this.length++;
+    return true
+  }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+    
+    let previousNode = this.get(index - 1);
+    let removedNode = previousNode.next;
+    previousNode.next = removedNode.next;
+    this.removeNodeBindings(removedNode);
+  }
+
   removeNodeBindings(currentNode) {
     currentNode.next = null;
     this.length -= 1;
@@ -104,3 +130,5 @@ list.push(902);
 list.push(903);
 list.push(904);
 list.push(905);
+list.remove(2)
+list.insert(2, "ninini")
