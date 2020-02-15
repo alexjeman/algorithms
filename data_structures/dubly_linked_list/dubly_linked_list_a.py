@@ -13,6 +13,27 @@ class LinkedList():
         self.head = None
         self.tail = None
 
+    def append(self, value):
+        new_node = Node(value)
+        if self.head is None:
+            self.set_head(new_node)
+            return
+        self.insert_after(self.tail, new_node)
+
+    def get(self, index):
+        node = self.head
+        current_index = 0
+        while node is not None and current_index != index:
+            node = node.next
+            current_index += 1
+        return node
+
+    def contains(self, value):
+        node = self.head
+        while node is not None and node.value != value:
+            node = node.next
+        return node is not None
+
     def set_head(self, node):
         if self.head is None:
             self.head = node
@@ -29,7 +50,6 @@ class LinkedList():
     def insert_before(self, node, new_node):
         if new_node == self.head and new_node == self.tail:
             return
-        self.remove(new_node)
         new_node.prev = node.prev
         new_node.next = node
         if node.prev is None:
@@ -41,7 +61,6 @@ class LinkedList():
     def insert_after(self, node, new_node):
         if new_node == self.head and new_node == self.tail:
             return
-        self.remove(new_node)
         new_node.prev = node
         new_node.next = node.next
         if node.next is None:
@@ -51,11 +70,11 @@ class LinkedList():
         node.next = new_node
 
     def insert_at_index(self, index, new_node):
-        if index == 1:
+        if index == 0:
             self.set_head(new_node)
             return
         node = self.head
-        current_index = 1
+        current_index = 0
         while node is not None and current_index != index:
             node = node.next
             current_index += 1
@@ -79,12 +98,6 @@ class LinkedList():
             self.tail = self.tail.prev
         self.remove_node_bindings(node)
 
-    def contains_node_with_value(self, value):
-        node = self.head
-        while node is not None and node.value != value:
-            node = node.next
-        return node is not None
-
     def remove_node_bindings(self, node):
         if node.prev is not None:
             node.prev.next = node.next
@@ -93,15 +106,31 @@ class LinkedList():
         node.prev = None
         node.next = None
 
+    def reverse(self):
+        temp = None
+        node = self.head
+        while node is not None:
+            temp = node.prev
+            node.prev = node.next
+            node.next = temp
+            node = node.prev
+        if temp is not None:
+            self.head, self.tail = self.tail, self.head
+
 
 linkedList = LinkedList()
-node1 = Node(1)
-node2 = Node(2)
+
+linkedList.append(1)
+linkedList.append(2)
+linkedList.append(3)
 
 
-linkedList.remove_nodes_with_value(1)
-linkedList.insert_at_index(1, node1)
-linkedList.insert_at_index(2, node2)
-print(linkedList.head)
-print(linkedList.tail)
-print(linkedList.contains_node_with_value(1))
+print(f"head: {linkedList.head}")
+print(f"tail: {linkedList.tail}")
+print(linkedList.contains(3))
+
+print("reverse linked list:")
+linkedList.reverse()
+print(linkedList.get(0))
+print(linkedList.get(1))
+print(linkedList.get(2))
