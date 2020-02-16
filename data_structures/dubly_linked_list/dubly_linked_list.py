@@ -59,7 +59,7 @@ class LinkedList():
         node.prev = new_node
 
     def insert_after(self, node, new_node):
-        if new_node == self.head and new_node == self.tail:
+        if new_node == self.head and new_node == node:
             return
         new_node.prev = node
         new_node.next = node.next
@@ -123,13 +123,12 @@ linkedList = LinkedList()
 linkedList.append(1)
 linkedList.append(2)
 linkedList.append(3)
+linkedList.reverse()
 
+print(linkedList.contains(3))
+print("reverse linked list:")
 print(f"head: {linkedList.head}")
 print(f"tail: {linkedList.tail}")
-print(linkedList.contains(3))
-
-print("reverse linked list:")
-linkedList.reverse()
 print(linkedList.get(0))
 print(linkedList.get(1))
 print(linkedList.get(2))
