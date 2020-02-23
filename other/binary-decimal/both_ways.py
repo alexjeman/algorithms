@@ -6,11 +6,14 @@ def decToBin(n):
     return "".join(reversed(res))
 
 
+# def binToDec(n):
+#     res = 0
+#     for i in range(len(n)):
+#         res += int(n[len(n) - 1 - i])*pow(2, i)
+#     return res
+
 def binToDec(n):
-    res = 0
-    for i in range(len(n)):
-        res += int(n[len(n) - 1 - i])*pow(2, i)
-    return res
+    return int(''.join(str(a) for a in n), 2)
 
 
 # Convert decimal to binary and binary to decimal

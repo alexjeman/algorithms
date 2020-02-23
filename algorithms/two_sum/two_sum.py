@@ -4,10 +4,10 @@ def twoNumberSum(arr, targetSum):
     for i in range(len(arr)):
         possibleMatch = targetSum - arr[i]
         indexedMatch = index.get(possibleMatch)
-        if indexedMatch == None:
+        if indexedMatch is None:
             index[arr[i]] = i
         else:
-            return [indexedMatch, i] # Add array[ ] if you want to return numbers
+            return [indexedMatch, i]  # Add arr[ ] to return numbers
     return []
 
 
